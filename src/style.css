@@ -6,7 +6,7 @@
 }
 body {
   overflow-x: hidden;
-  
+
   height: 100vh;
   width: 100vw;
   max-width: 100vw;
@@ -16,6 +16,70 @@ body {
   background-color: #9aa6a2;
 }
 
+#blocker {
+  display: block;
+  width: 20rem;
+  height: 40rem;
+  z-index: 1;
+  position: absolute;
+  
+  background-color: rgba(136, 136, 136, 0.239);
+  
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  --webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(136, 136, 136, 0.3);
+  border-radius: 3rem;
+  
+  display: none;
+}
+
+#modal {
+  z-index: 2;
+  background-color: #f4f4f4;
+  position: absolute;
+  gap: 1.2rem;
+  top: 30%;
+  width: 17.4rem;
+  box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e2e2;
+
+  display: none;
+}
+#modal > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+#modal > div > label {
+  font-size: 0.9rem;
+  color: #535960;
+}
+
+#modal > h3 {
+  text-align: center;
+}
+#modal input,
+#modal button {
+  height: 2.5rem;
+}
+#modal > input {
+  padding: 0 0.8rem;
+  border: 1px solid #d4d9d6;
+}
+#modal button {
+  color: #a9ffcb;
+  background-color: #09b57a;
+  width: 80%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  border: 1px solid #a9ffcb;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin: auto;
+  font-weight: bold;
+}
 #app {
   width: 20rem;
   background-image: linear-gradient(to bottom, #fde6be, #f9f7f8);
@@ -53,7 +117,6 @@ body {
   justify-content: space-evenly;
   color: #986f72;
   font-size: 0.9rem;
-
 }
 #info > div > span {
   display: flex;

@@ -18,6 +18,19 @@
     <title>APP Controle de Peso</title>
   </head>
   <body>
+    <div id="blocker"></div>
+    <div id="modal" class="rounded-card">
+      <h3>Digite Seu Peso</h3>
+      <div>
+        <label for="day">Data:</label>
+        <input type="date" id="day">
+      </div>
+      <div>
+        <label for="weight">Peso Atual:</label>
+        <input type="text" id="weight" autocomplete="off">
+      </div>
+      <button id="confirm">Confirma</button>
+    </div>
     <div id="app">
       <section>
         <h2>Seu Progresso</h2>
@@ -29,10 +42,10 @@
           <div>
             <span>
               <span class="material-symbols-outlined"> calendar_month </span>
-              <span id="lastest-day">2023-04-20 </span>
+              <span id="lastest-day">20-04-2023 </span>
             </span>
             <span>
-              <span class="material-symbols-outlined"> monitor_weight </span>
+              <span class="material-symbols-outlined"> scale </span>
               <span id="lastest-weight"> 500kg </span>
             </span>
           </div>
@@ -48,6 +61,7 @@
         </div>
       </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
     <script src="/src/script.js"></script>
   </body>
