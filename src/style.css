@@ -5,6 +5,8 @@
   font-family: 'Nunito', sans-serif;
 }
 body {
+  overflow-x: hidden;
+  
   height: 100vh;
   width: 100vw;
   max-width: 100vw;
