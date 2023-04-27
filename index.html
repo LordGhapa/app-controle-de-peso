@@ -4,11 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
     <title>APP Controle de Peso</title>
-    <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    ola mundo
-    <script src="/assets/script.js"></script>
+    <div id="app">
+      <section>
+        <h2>Seu Progresso</h2>
+        <canvas id="chart"> </canvas>
+      </section>
+      <section>
+        <div class="rounded-card" id="info">
+          <h3>Seu ultimo registro</h3>
+          <div>
+            <span>
+              <span class="material-symbols-outlined"> calendar_month </span>
+              <span id="lastest-day">2023-04-20 </span>
+            </span>
+            <span>
+              <span class="material-symbols-outlined"> monitor_weight </span>
+              <span id="lastest-weight"> 500kg </span>
+            </span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Informações Pessoais</h2>
+        <div class="rounded-card" id="actions">
+          <span>Registre seu peso diariamente e veja seu progresso</span>
+          <div>
+            <span id="btn"> Registro de Peso </span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="/src/script.js"></script>
   </body>
 </html>
