@@ -27,7 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Simple App de monitoramento de peso usando html,css,js e algumas lib com animejs e Chart.js
+Simples App de monitoramento de peso usando html,css,js e algumas lib com animejs e Chart.js
 
 - [Acesse o projeto finalizado, online](https://lordghapa.github.io/app-controle-de-peso/)
 
