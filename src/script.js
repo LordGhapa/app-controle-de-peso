@@ -39,9 +39,9 @@ window.addEventListener('load', () => {
       datasets: [
         {
           data: weights.weights,
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: '#f49d37',
-          pointStyle: false,
+          pointStyle: true,
           cubicInterpolationMode: 'monotone'
         }
       ]
@@ -108,6 +108,34 @@ const closeModal = e => {
   modal.style.display = 'none'
 }
 
+const sendWeight = () => {
+  let weight = parseInt(document.querySelector('#weight').value)
+  let day = document.querySelector('#day').value
+
+  const date = new Date(day)
+  date.setDate(date.getDate() + 1)
+
+  weights.weights.push({
+    //day: new Date(day).toISOString().split('T')[0],
+    day: date.toLocaleDateString('pt-BR'),
+    weight: weight
+  })
+
+  weights?.weights.sort(function (a, b) {
+    return new Date(a.day) - new Date(b.day)
+  })
+
+  console.log(weights.weights)
+
+  if (weight) {
+    localStorage.setItem('weights', JSON.stringify(weights))
+  }
+  closeModal()
+  lineChart.update('reset')
+  lineChart.update('show')
+  updateLatestWeightIn()
+}
+
 const updateLatestWeightIn = () => {
   const latestDay = document.querySelector('#latest-day')
   const latestWeight = document.querySelector('#latest-weight')
@@ -119,3 +147,4 @@ const updateLatestWeightIn = () => {
 
 document.querySelector('#btn').addEventListener('click', openModal)
 blocker.addEventListener('click', closeModal)
+document.querySelector('#confirm').addEventListener('click', sendWeight)
