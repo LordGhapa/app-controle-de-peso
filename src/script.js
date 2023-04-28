@@ -114,19 +114,28 @@ const sendWeight = () => {
 
   const date = new Date(day)
   date.setDate(date.getDate() + 1)
+  const currentDayFormated = date.toLocaleDateString('pt-BR')
 
-  weights.weights.push({
-    //day: new Date(day).toISOString().split('T')[0],
-    day: date.toLocaleDateString('pt-BR'),
-    weight: weight
-  })
+  let found = false
+  for (let i = 0; i < weights.weights.length; i++) {
+    if (weights.weights[i].day === currentDayFormated) {
+      weights.weights[i].weight = weight
+      found = true
+      break
+    }
+  }
+  if (!found) {
+    weights.weights.push({
+      //day: new Date(day).toISOString().split('T')[0],
+      day: currentDayFormated,
+      weight: weight
+    })
+  }
 
   weights?.weights.sort(function (a, b) {
     return new Date(a.day) - new Date(b.day)
   })
-
-  console.log(weights.weights)
-
+  
   if (weight) {
     localStorage.setItem('weights', JSON.stringify(weights))
   }
