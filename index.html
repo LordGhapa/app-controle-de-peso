@@ -23,16 +23,17 @@
       <h3>Digite Seu Peso</h3>
       <div>
         <label for="day">Data:</label>
-        <input type="date" id="day">
+        <input type="date" id="day" />
       </div>
       <div>
         <label for="weight">Peso Atual:</label>
-        <input type="text" id="weight" autocomplete="off">
+        <input type="text" id="weight" autocomplete="off" />
       </div>
       <button id="confirm">Confirma</button>
     </div>
     <div id="app">
       <section>
+        <h1>App Controle de Peso</h1>
         <h2>Seu Progresso</h2>
         <canvas id="chart"> </canvas>
       </section>
@@ -40,11 +41,11 @@
         <div class="rounded-card" id="info">
           <h3>Seu Ultimo Registro</h3>
           <div>
-            <span>
+            <span title="Data">
               <span class="material-symbols-outlined"> calendar_month </span>
-              <span id="latest-day"> </span>
+              <span id="latest-day" title="Data"></span>
             </span>
-            <span>
+            <span title="Peso">
               <span class="material-symbols-outlined"> scale </span>
               <span id="latest-weight"> </span>
             </span>

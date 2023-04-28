@@ -109,8 +109,15 @@ const closeModal = e => {
 }
 
 const sendWeight = () => {
-  let weight = parseInt(document.querySelector('#weight').value)
-  let day = document.querySelector('#day').value
+  const weightElement = document.querySelector('#weight')
+  let weight = parseInt(weightElement.value)
+
+  const dayElement = document.querySelector('#day')
+  let day = dayElement.value
+
+  if (day === '' || weight === '') {
+    return
+  }
 
   const date = new Date(day)
   date.setDate(date.getDate() + 1)
@@ -135,7 +142,7 @@ const sendWeight = () => {
   weights?.weights.sort(function (a, b) {
     return new Date(a.day) - new Date(b.day)
   })
-  
+
   if (weight) {
     localStorage.setItem('weights', JSON.stringify(weights))
   }
