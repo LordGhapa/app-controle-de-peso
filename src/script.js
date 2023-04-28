@@ -1,5 +1,5 @@
 let lineChart
-let weights = {
+/* let weights = {
   weights: [
     { day: '2023-04-01', weight: 150 },
     { day: '2023-04-02', weight: 148 },
@@ -22,12 +22,16 @@ let weights = {
     { day: '2023-04-19', weight: 129 },
     { day: '2023-04-20', weight: 128 }
   ]
-}
+} */
+let weights
 
 const blocker = document.querySelector('#blocker')
 const modal = document.querySelector('#modal')
 
 window.addEventListener('load', () => {
+  manageLocalStore()
+  updateLatestWeightIn()
+
   const ctx = document.querySelector('#chart')
   lineChart = new Chart(ctx, {
     type: 'line',
@@ -78,6 +82,14 @@ window.addEventListener('load', () => {
   })
 })
 
+const manageLocalStore = () => {
+  weights = JSON.parse(localStorage.getItem('weights'))
+
+  if (!weights) {
+    localStorage.setItem('weights', JSON.stringify({ weights: [] }))
+    weights = { weights: [] }
+  }
+}
 const openModal = e => {
   blocker.style.display = 'block'
   modal.style.display = 'flex'
@@ -95,5 +107,15 @@ const closeModal = e => {
   blocker.style.display = 'none'
   modal.style.display = 'none'
 }
+
+const updateLatestWeightIn = () => {
+  const latestDay = document.querySelector('#latest-day')
+  const latestWeight = document.querySelector('#latest-weight')
+  const latestWeightIn = weights.weights[weights.weights.length - 1]
+
+  latestDay.innerHTML = latestWeightIn?.day ?? '-'
+  latestWeight.innerHTML = latestWeightIn ? latestWeightIn.weight + 'kg' : '-'
+}
+
 document.querySelector('#btn').addEventListener('click', openModal)
 blocker.addEventListener('click', closeModal)
