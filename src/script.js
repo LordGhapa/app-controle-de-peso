@@ -229,8 +229,6 @@ function historyDelActions() {
     item.addEventListener('click', e => {
       // weights.weights.forEach(item => console.log('antes', item.weight))
       historyDelItem(e.target.id)
-      console.log(e.target.parentElement)
-
       anime({
         targets: e.target.parentElement,
         duration: 500,
