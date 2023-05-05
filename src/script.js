@@ -140,7 +140,10 @@ const sendWeight = () => {
   }
 
   weights?.weights.sort(function (a, b) {
-    return new Date(a.day) - new Date(b.day)
+    let dataA = new Date(convertDateFormat(a.day))
+    let dataB = new Date(convertDateFormat(b.day))
+    let diff = dataA - dataB
+    return diff
   })
 
   if (weight) {
@@ -159,6 +162,18 @@ const updateLatestWeightIn = () => {
 
   latestDay.innerHTML = latestWeightIn?.day ?? '-'
   latestWeight.innerHTML = latestWeightIn ? latestWeightIn.weight + 'kg' : '-'
+}
+
+function convertDateFormat(dateString) {
+  const parts = dateString.split('/')
+  const day = parts[0]
+  const month = parts[1]
+  const year = parts[2]
+  const dateObj = new Date(`${month}/${day}/${year}`)
+  const newDateString = `${
+    dateObj.getMonth() + 1
+  }/${dateObj.getDate()}/${dateObj.getFullYear()}`
+  return newDateString
 }
 
 document.querySelector('#btn').addEventListener('click', openModal)
