@@ -158,9 +158,9 @@ const sendWeight = () => {
   if (weight) {
     localStorage.setItem('weights', JSON.stringify(weights))
   }
-  
-  weightElement.value=""
-  dayElement.value=""
+
+  weightElement.value = ''
+  dayElement.value = ''
   closeModal()
   lineChart.update('reset')
   lineChart.update('show')
@@ -227,19 +227,30 @@ document.querySelector('#history').addEventListener('click', () => {
 function historyDelActions() {
   document.querySelectorAll('.historyDel').forEach(item =>
     item.addEventListener('click', e => {
-      weights.weights.forEach(item => console.log('antes', item.weight))
+      // weights.weights.forEach(item => console.log('antes', item.weight))
       historyDelItem(e.target.id)
-      weights.weights.forEach(item => console.log('depois', item.weight))
+      console.log(e.target.parentElement)
+
+      anime({
+        targets: e.target.parentElement,
+        duration: 500,
+        translateX: [0, 50],
+        opacity: [1, 0],
+        easing: 'easeInExpo',
+        complete: function () {
+          localStorage.setItem('weights', JSON.stringify(weights))
+          lineChart.update('reset')
+          lineChart.update('show')
+          updateLatestWeightIn()
+          historyContent()
+          historyDelActions()
+        }
+      })
+      // weights.weights.forEach(item => console.log('depois', item.weight))
     })
   )
 }
 
 function historyDelItem(index) {
   weights.weights.splice(index, 1)
-  localStorage.setItem('weights', JSON.stringify(weights))
-  lineChart.update('reset')
-  lineChart.update('show')
-  updateLatestWeightIn()
-  historyContent()
-  historyDelActions()
 }
