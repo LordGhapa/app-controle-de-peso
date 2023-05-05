@@ -27,14 +27,36 @@
       </div>
       <div>
         <label for="weight">Peso Atual:</label>
-        <input type="text" id="weight" autocomplete="off" />
+        <input type="number" id="weight" autocomplete="off" />
       </div>
       <button id="confirm">Confirma</button>
     </div>
+
+    <div id="historyModal" class="rounded-card">
+      <h3>Histórico</h3>
+      <span  class="material-symbols-outlined historyClose"> close </span>
+      <div class="historyInfo">
+        <span>Data</span>
+        <span>Peso</span>
+      </div>
+      <ul class="historyData">
+     <!--    <li>
+          <input type="text" disabled />
+          <input type="text" disabled />
+          <span  class="material-symbols-outlined historyDel">
+            delete_forever
+            </span>
+        </li> -->
+      </ul>
+    </div>
+
     <div id="app">
       <section class="main">
         <h1>App Controle de Peso</h1>
         <h2>Seu Progresso</h2>
+        <span id="history" class="material-symbols-outlined" title="Histórico">
+          manage_search
+        </span>
         <canvas id="chart"> </canvas>
       </section>
       <section>

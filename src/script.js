@@ -27,10 +27,14 @@ let weights
 
 const blocker = document.querySelector('#blocker')
 const modal = document.querySelector('#modal')
+const historyModal = document.querySelector('#historyModal')
+const historyData = historyModal.querySelector('.historyData')
 
 window.addEventListener('load', () => {
   manageLocalStore()
   updateLatestWeightIn()
+  historyContent()
+  historyDelActions()
 
   const ctx = document.querySelector('#chart')
   lineChart = new Chart(ctx, {
@@ -90,6 +94,7 @@ const manageLocalStore = () => {
     weights = { weights: [] }
   }
 }
+
 const openModal = e => {
   blocker.style.display = 'block'
   modal.style.display = 'flex'
@@ -106,11 +111,16 @@ const openModal = e => {
 const closeModal = e => {
   blocker.style.display = 'none'
   modal.style.display = 'none'
+  historyModal.style.display = 'none'
 }
 
 const sendWeight = () => {
   const weightElement = document.querySelector('#weight')
   let weight = parseInt(weightElement.value)
+  if (typeof weight !== 'number') {
+    alert('Valor invalido ')
+    return
+  }
 
   const dayElement = document.querySelector('#day')
   let day = dayElement.value
@@ -148,10 +158,15 @@ const sendWeight = () => {
   if (weight) {
     localStorage.setItem('weights', JSON.stringify(weights))
   }
+  
+  weightElement.value=""
+  dayElement.value=""
   closeModal()
   lineChart.update('reset')
   lineChart.update('show')
   updateLatestWeightIn()
+  historyContent()
+  historyDelActions()
 }
 
 const updateLatestWeightIn = () => {
@@ -175,6 +190,56 @@ function convertDateFormat(dateString) {
   return newDateString
 }
 
+function historyContent() {
+  let data = weights?.weights
+    ? weights.weights.map((item, index) => {
+        return `<li>
+      <input type="text" disabled value="${item.day}"/>
+      <input type="text" disabled value="${item.weight}" />
+      <span id="${index}" class="material-symbols-outlined historyDel">delete_forever</span>
+    </li>`
+      })
+    : ''
+
+  if (data.length < 1) {
+    data = ['<p>Nenhum Valor Registrado</p>']
+  }
+  historyData.innerHTML = data.join('')
+}
+
 document.querySelector('#btn').addEventListener('click', openModal)
+document.querySelector('.historyClose').addEventListener('click', closeModal)
 blocker.addEventListener('click', closeModal)
 document.querySelector('#confirm').addEventListener('click', sendWeight)
+
+document.querySelector('#history').addEventListener('click', () => {
+  blocker.style.display = 'block'
+  historyModal.style.display = 'flex'
+  anime({
+    targets: historyModal,
+    duration: 500,
+    translateY: [50, 0],
+    opacity: [0, 1],
+    easing: 'easeOutElastic(2,.6)'
+  })
+})
+
+function historyDelActions() {
+  document.querySelectorAll('.historyDel').forEach(item =>
+    item.addEventListener('click', e => {
+      weights.weights.forEach(item => console.log('antes', item.weight))
+      historyDelItem(e.target.id)
+      weights.weights.forEach(item => console.log('depois', item.weight))
+    })
+  )
+}
+
+function historyDelItem(index) {
+  weights.weights.splice(index, 1)
+  localStorage.setItem('weights', JSON.stringify(weights))
+  lineChart.update('reset')
+  lineChart.update('show')
+  updateLatestWeightIn()
+  historyContent()
+  historyDelActions()
+}
