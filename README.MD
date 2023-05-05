@@ -1,6 +1,6 @@
 <h1 align="center">App monitoramento de peso</h1>
 
-![image](https://user-images.githubusercontent.com/99082399/235146836-bb976d01-3d9a-49ed-aa52-3c57ebc60e27.png)
+![image](https://user-images.githubusercontent.com/99082399/236557746-d734808f-3df3-4d0a-951a-38525fbecf05.png)
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
