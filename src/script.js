@@ -133,7 +133,6 @@ const sendWeight = () => {
   }
   if (!found) {
     weights.weights.push({
-      //day: new Date(day).toISOString().split('T')[0],
       day: currentDayFormated,
       weight: weight
     })
