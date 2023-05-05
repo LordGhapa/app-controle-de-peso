@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
         {
           data: weights.weights,
           borderWidth: 3,
-          borderColor: '#f49d37',
+          borderColor: '#197bbd',
           pointStyle: true,
           cubicInterpolationMode: 'monotone'
         }
