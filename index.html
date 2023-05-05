@@ -19,7 +19,7 @@
   </head>
   <body>
     <div id="blocker"></div>
-    <div id="modal" class="rounded-card">
+    <form id="modal" class="rounded-card" onsubmit="return false;">
       <h3>Digite Seu Peso</h3>
       <div>
         <label for="day">Data:</label>
@@ -29,8 +29,8 @@
         <label for="weight">Peso Atual:</label>
         <input type="number" id="weight" autocomplete="off" />
       </div>
-      <button id="confirm">Confirma</button>
-    </div>
+      <button type="submit" id="confirm">Confirma</button> 
+    </form>
 
     <div id="historyModal" class="rounded-card">
       <h3>Histórico</h3>
