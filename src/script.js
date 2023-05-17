@@ -1,4 +1,4 @@
-let lineChartfi
+let lineChart
 let weights
 
 const blocker = document.querySelector('#blocker')
